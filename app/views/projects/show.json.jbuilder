@@ -1,0 +1,1 @@
+json.extract! @project, :id, :name, :subtitle, :score, :oldscore, :description, :metricLOS, :new, :datecreated, :dateunderreview, :datereviewed, :approved, :dateapproved, :dateedited, :sendto, :ondeck, :exists, :visiblepenn, :visibleRoy, :visibleBrian, :visibleDamien, :visibleBill, :visibleNeha, :visibleSubha, :visiblemhealth, :created_at, :updated_at

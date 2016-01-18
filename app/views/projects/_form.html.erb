@@ -1,0 +1,113 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :subtitle %><br>
+    <%= f.text_area :subtitle %>
+  </div>
+  <div class="field">
+    <%= f.label :score %><br>
+    <%= f.text_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :oldscore %><br>
+    <%= f.text_field :oldscore %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :metricLOS %><br>
+    <%= f.check_box :metricLOS %>
+  </div>
+  <div class="field">
+    <%= f.label :new %><br>
+    <%= f.check_box :new %>
+  </div>
+  <div class="field">
+    <%= f.label :datecreated %><br>
+    <%= f.datetime_select :datecreated %>
+  </div>
+  <div class="field">
+    <%= f.label :dateunderreview %><br>
+    <%= f.datetime_select :dateunderreview %>
+  </div>
+  <div class="field">
+    <%= f.label :datereviewed %><br>
+    <%= f.datetime_select :datereviewed %>
+  </div>
+  <div class="field">
+    <%= f.label :approved %><br>
+    <%= f.check_box :approved %>
+  </div>
+  <div class="field">
+    <%= f.label :dateapproved %><br>
+    <%= f.datetime_select :dateapproved %>
+  </div>
+  <div class="field">
+    <%= f.label :dateedited %><br>
+    <%= f.datetime_select :dateedited %>
+  </div>
+  <div class="field">
+    <%= f.label :sendto %><br>
+    <%= f.text_field :sendto %>
+  </div>
+  <div class="field">
+    <%= f.label :ondeck %><br>
+    <%= f.check_box :ondeck %>
+  </div>
+  <div class="field">
+    <%= f.label :exists %><br>
+    <%= f.check_box :exists %>
+  </div>
+  <div class="field">
+    <%= f.label :visiblepenn %><br>
+    <%= f.check_box :visiblepenn %>
+  </div>
+  <div class="field">
+    <%= f.label :visibleRoy %><br>
+    <%= f.check_box :visibleRoy %>
+  </div>
+  <div class="field">
+    <%= f.label :visibleBrian %><br>
+    <%= f.check_box :visibleBrian %>
+  </div>
+  <div class="field">
+    <%= f.label :visibleDamien %><br>
+    <%= f.check_box :visibleDamien %>
+  </div>
+  <div class="field">
+    <%= f.label :visibleBill %><br>
+    <%= f.check_box :visibleBill %>
+  </div>
+  <div class="field">
+    <%= f.label :visibleNeha %><br>
+    <%= f.check_box :visibleNeha %>
+  </div>
+  <div class="field">
+    <%= f.label :visibleSubha %><br>
+    <%= f.check_box :visibleSubha %>
+  </div>
+  <div class="field">
+    <%= f.label :visiblemhealth %><br>
+    <%= f.check_box :visiblemhealth %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,47 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>mHealth Project Admin Dashboard</title>
+      
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+  
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
+      <!-- Bootstrap -->
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Bootstrap Material Design -->
+      <%= stylesheet_link_tag 'bootstrap-material-design', 'ripples.min' %>
+      <!--<link href="./assets/stylesheets/bootstrap-material-design.css" rel="stylesheet">-->
+      <!--<link href="./assets/stylesheets/ripples.min.css" rel="stylesheet">-->
+  
+
+      <!--Import materialize.css-->
+      <!--<link type="text/css" rel="stylesheet" href="./assets/stylesheets/materialize.min.css"  media="screen,projection"/>-->
+  
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+      
+      <div class="container">
+        <%= yield %>
+      </div>
+      
+      
+      
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <%= javascript_include_tag "material.min", "ripple.min" %>
+      <!--<script type="text/javascript" src="./assets/javascripts/material.min.js"></script>-->
+      <!--<script type="text/javascript" src="./assets/javascripts/ripples.min.js"></script>-->
+     
+    </body>
+  </html>
+        

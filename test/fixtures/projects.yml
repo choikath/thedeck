@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  subtitle: MyText
+  score: MyString
+  oldscore: MyString
+  description: MyText
+  metricLOS: false
+  new: false
+  datecreated: 2016-01-14 20:54:46
+  dateunderreview: 2016-01-14 20:54:46
+  datereviewed: 2016-01-14 20:54:46
+  approved: false
+  dateapproved: 2016-01-14 20:54:46
+  dateedited: 2016-01-14 20:54:46
+  sendto: MyString
+  ondeck: false
+  exists: false
+  visiblepenn: false
+  visibleRoy: false
+  visibleBrian: false
+  visibleDamien: false
+  visibleBill: false
+  visibleNeha: false
+  visibleSubha: false
+  visiblemhealth: false
+
+two:
+  name: MyString
+  subtitle: MyText
+  score: MyString
+  oldscore: MyString
+  description: MyText
+  metricLOS: false
+  new: false
+  datecreated: 2016-01-14 20:54:46
+  dateunderreview: 2016-01-14 20:54:46
+  datereviewed: 2016-01-14 20:54:46
+  approved: false
+  dateapproved: 2016-01-14 20:54:46
+  dateedited: 2016-01-14 20:54:46
+  sendto: MyString
+  ondeck: false
+  exists: false
+  visiblepenn: false
+  visibleRoy: false
+  visibleBrian: false
+  visibleDamien: false
+  visibleBill: false
+  visibleNeha: false
+  visibleSubha: false
+  visiblemhealth: false
