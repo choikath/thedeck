@@ -28,6 +28,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'materialize-sass'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
+# adding sqlite3 adapter (postgresql)
+gem 'activerecord-postgresql-adapter'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -50,3 +53,6 @@ group :development do
   gem 'spring'
 end
 
+group :development, :test do
+    gem 'sqlite3'
+end
