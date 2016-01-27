@@ -7,7 +7,7 @@ Rails.application.routes.draw do
    root 'projects#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  #   get 'projects/:id' => 'projects#show'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -17,17 +17,18 @@ Rails.application.routes.draw do
     
     get 'projects/new' => 'projects#new'
 
+
   # Example resource route with options:
-  #   resources :products do
+     resources :products do
   #     member do
   #       get 'short'
   #       post 'toggle'
   #     end
   #
-  #     collection do
+       collection do
   #       get 'sold'
-  #     end
-  #   end
+       end
+     end
 
   # Example resource route with sub-resources:
   #   resources :products do

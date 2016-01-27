@@ -1,6 +1,6 @@
 
 
- <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
  
  
 <div class="page-header" align="center" id="banner">
@@ -32,16 +32,30 @@
 
 
 
+
+  
+    <!-- replace with accounts current user -->
+<% currentUser = 1 %> <!-- 1 = admin, 2 = mhealth, 3 = Bill for demo -->
+
+<% if currentUser == 2 %>
+    <% allvisibleprojects = @projects.where(visiblemhealth: true).order(:score) %>
+    <p>Hello mhealth!</p>
+<% elsif currentUser == 3 %>
+    <% allvisibleprojects = @projects.where(visibleBill: true).order(:score) %>
+    <p>Hello Bill!</p>
+<% else %>
+     <% allvisibleprojects = @projects.order(:score) %>
+<% end %>
+
+
 <div class="row">
     <a href="#" class="btn btn-raised btn-info">Reviewed!</a>
   
-  
   </div>
-  
-  
+
 <div class="row">
   
-<% @projects.order(:score).each do |project|%>
+<% allvisibleprojects.each do |project|%>
 <% if project.exists %>
 <div class="col-sm-6">
  <div class="well infobox">
@@ -67,12 +81,12 @@
      
          
      <% if project.new %>
-         <label class="control-label" for="inputSmall"><%= project.datecreated.to_formatted_s(:long) %></label>
+         <label class="control-label" for="inputSmall"><%= project.created_at.to_formatted_s(:long) %></label>
          
      <% elsif project.approved %>
          <label class="control-label green" for="inputSmall"><i><%= project.dateapproved.to_formatted_s(:long) %> &nbsp; (approved)</i></label>
      <% else %>
-         <label class="control-label" for="inputSmall"><i><%= project.dateedited.to_formatted_s(:long) %> &nbsp; (edited)</i></label>
+         <label class="control-label" for="inputSmall"><i><%= project.updated_at.to_formatted_s(:long) %> &nbsp; (edited)</i></label>
          <label class="control-label" for="inputSmall"><% project.dateunderreview.to_formatted_s(:long)  %> &nbsp; (under review)</label>    
          <label class="control-label" for="inputSmall"><% project.datereviewed.to_formatted_s(:long)  %> &nbsp; (reviewed)</label>    
      <% end %>

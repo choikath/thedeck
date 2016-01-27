@@ -4,13 +4,34 @@
 <div class="row">
     <% if @project.dateunderreview > @project.datecreated %>
         <a href="#" class="btn btn-raised btn-default">Under Review</a>
+    <% end %>
     <% if @project.datereviewed > @project.dateunderreview %>
         <a href="#" class="btn btn-raised btn-info">Reviewed</a>
+    <% end %>
     <% if @project.approved %>
         <a href="#" class="btn btn-raised btn-success">Approved</a>
-    </div>
+    <% end %>
+  </div>
   
- <div class="jumbotron">
+  <p>
+  <% if @project.new %>
+  <label class="control-label red" for="inputSmall"><i>new</i></label>&nbsp;
+  &nbsp;&nbsp;<% end %>
+
+  <% if ! @project.exists %>
+      <i class="material-icons red md-14">visibility_off</i>&nbsp;<label class="control-label red" for="inputSmall"><i>(Deleted entry)&nbsp;&nbsp;</i></label>
+  &nbsp;&nbsp;<% end %>
+  
+  <!--<% if @project.metricLOS %>-->
+  <!--<i class="material-icons blue md-14">vpn_key</i>-->
+  <!--&nbsp;&nbsp;<% end %>-->
+  
+  <!--<% if @project.ondeck %>-->
+  <!--<i class="material-icons md-14" style="color:#3F51B5">verified_user</i>-->
+  <!--<% end %>-->
+</p>
+    
+ <div class="well infobox">
     
      <% if @project.oldscore < @project.score %> <!-- increased score! -->
         <button type="button" class="btn btn-fab btn-fab-mini" style="color:#4caf50"><%= @project.score %></button>
@@ -32,89 +53,72 @@
      <p>
      <%= @project.description %> 
      </p>
-         <label class="control-label" for="inputSmall"><%= @project.datecreated.to_formatted_s(:long) %> &nbsp; (new)</label>&nbsp;
-         <label class="control-label green" for="inputSmall"><%= @project.dateapproved.to_formatted_s(:long) %> &nbsp; (approved)</label>&nbsp;
-         <label class="control-label" for="inputSmall"><i><%= @project.dateedited.to_formatted_s(:long) %> &nbsp; (edited)</i></label>&nbsp;
-         <label class="control-label" for="inputSmall"><% @project.dateunderreview.to_formatted_s(:long)  %> &nbsp; (under review)</label>&nbsp;   
-         <label class="control-label" for="inputSmall"><% @project.datereviewed.to_formatted_s(:long)  %> &nbsp; (reviewed)</label>&nbsp;    
+         <label class="control-label" for="inputSmall">created on &nbsp;<%= @project.created_at.to_formatted_s(:long) %></label><br>
+         <label class="control-label" for="inputSmall">under review on &nbsp;<% @project.dateunderreview.to_formatted_s(:long)  %></label><br>   
+         <label class="control-label" for="inputSmall">reviewed on &nbsp;<% @project.datereviewed.to_formatted_s(:long)  %></label><br>    
+         <label class="control-label" for="inputSmall"><i>edited last on &nbsp;<%= @project.updated_at.to_formatted_s(:long) %></i></label><br>
+         <label class="control-label green" for="inputSmall">approved on &nbsp;<%= @project.dateapproved.to_formatted_s(:long) %></label>&nbsp;
+         
      <p>
      </p>
  </div>   
- <% else %>
+
 
  
 
 
-
 <p>
-  <strong>Metriclos:</strong>
-  <%= @project.metricLOS %>
+<strong>Visible to: &nbsp;</strong>
+  <% if @project.visiblepenn %>
+  <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>Penn</button> 
+  <% end %>
+  <% if @project.visiblemhealth %>  
+  <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>mH</button> 
+  <% end %>
+  <% if @project.visibleBrian %>  
+  <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>BW</button> 
+  <% end %>
+  <% if @project.visibleDamien %>
+  <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>DL</button> 
+  <% end %>
+  <% if @project.visibleBill %>  
+  <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>BH</button> 
+  <% end %>
+  <% if @project.visibleNeha %>
+  <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>NP</button> 
+  <% end %>
+  <% if @project.visibleSubha %>
+  <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>SA</button> 
+  <% end %>
+  <% if @project.visibleRoy %>
+  <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>RR</button> 
+  <% end %>
+  
 </p>
 
 <p>
-  <strong>New:</strong>
-  <%= @project.new %>
-</p>
-
-
-
-<p>
-  <strong>Sendto:</strong>
+  <strong>Sent to:</strong>
   <%= @project.sendto %>
+
+
 </p>
 
 <p>
-  <strong>Ondeck:</strong>
-  <%= @project.ondeck %>
-</p>
-
-<p>
-  <strong>Exists:</strong>
-  <%= @project.exists %>
-</p>
-
-<p>
-  <strong>Visiblepenn:</strong>
-  <%= @project.visiblepenn %>
-</p>
-
-<p>
-  <strong>Visibleroy:</strong>
-  <%= @project.visibleRoy %>
-</p>
-
-<p>
-  <strong>Visiblebrian:</strong>
-  <%= @project.visibleBrian %>
-</p>
-
-<p>
-  <strong>Visibledamien:</strong>
-  <%= @project.visibleDamien %>
-</p>
-
-<p>
-  <strong>Visiblebill:</strong>
-  <%= @project.visibleBill %>
-</p>
-
-<p>
-  <strong>Visibleneha:</strong>
-  <%= @project.visibleNeha %>
-</p>
-
-<p>
-  <strong>Visiblesubha:</strong>
-  <%= @project.visibleSubha %>
-</p>
-
-<p>
-  <strong>Visiblemhealth:</strong>
-  <%= @project.visiblemhealth %>
+  <% if @project.metricLOS %>
+  <i class="material-icons blue md-14">vpn_key</i>&nbsp;<label class="control-label blue" for="inputSmall">LOS metric&nbsp;&nbsp;</label>
+ <% end %>
+      <br>
+  <% if @project.ondeck %>
+  <i class="material-icons md-14" style="color:#3F51B5">verified_user</i>&nbsp;<label class="control-label" style="color:#3F51B5" for="inputSmall">On deck!&nbsp;&nbsp;</label>
+  <% end %>
 </p>
 
 
-<p>
+
+<br><br>
+
+
+
   
  <!--<h1>Listing Projects</h1>-->
   <!--<table>-->
@@ -184,5 +188,8 @@
 
 <!--</p>-->
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="row">
+    <a href="<%= edit_project_path(@project) %>" class="btn btn-raised">Edit project details &nbsp;<i class="material-icons md-18">edit</i></a>
+      &nbsp;&nbsp; 
+    <a href="<%= projects_path %>" class="btn btn-raised"><i class="material-icons md-18">home</i></a>
+  </div>
