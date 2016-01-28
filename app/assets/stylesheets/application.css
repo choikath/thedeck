@@ -26,6 +26,7 @@
  
  .material-icons.primary, .control-label.primary { color:#009688 ;}
  
+ i.material-icons { vertical-align: -3px;}
  
  .material-icons.md-18 { font-size: 18px; }
  

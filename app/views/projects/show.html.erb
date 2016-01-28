@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="row">
-    <% if @project.dateunderreview > @project.datecreated %>
-        <a href="#" class="btn btn-raised btn-default">Under Review</a>
-    <% end %>
-    <% if @project.datereviewed > @project.dateunderreview %>
-        <a href="#" class="btn btn-raised btn-info">Reviewed</a>
-    <% end %>
-    <% if @project.approved %>
-        <a href="#" class="btn btn-raised btn-success">Approved</a>
-    <% end %>
-  </div>
+<!--<div class="row">-->
+    <!--<% if @project.dateunderreview != nil and @project.datecreated != nil and @project.dateunderreview > @project.datecreated %>-->
+<!--        <a href="#" class="btn btn-raised btn-default">Under Review</a>-->
+<!--    <% end %>-->
+<!--    <% if @project.datereviewed != nil and @project.dateunderreview != nil and @project.datereviewed > @project.dateunderreview %>-->
+<!--        <a href="#" class="btn btn-raised btn-info">Reviewed</a>-->
+<!--    <% end %>-->
+<!--    <% if @project.approved %>-->
+<!--        <a href="#" class="btn btn-raised btn-success">Approved</a>-->
+<!--    <% end %>-->
+<!--  </div>-->
   
   <p>
   <% if @project.new %>
@@ -53,12 +53,21 @@
      <p>
      <%= @project.description %> 
      </p>
+         <% if @project.created_at != nil %>
          <label class="control-label" for="inputSmall">created on &nbsp;<%= @project.created_at.to_formatted_s(:long) %></label><br>
+         <% end %>
+         <% if @project.dateunderreview != nil %>
          <label class="control-label" for="inputSmall">under review on &nbsp;<% @project.dateunderreview.to_formatted_s(:long)  %></label><br>   
+         <% end %>
+         <% if @project.datereviewed != nil %>
          <label class="control-label" for="inputSmall">reviewed on &nbsp;<% @project.datereviewed.to_formatted_s(:long)  %></label><br>    
-         <label class="control-label" for="inputSmall"><i>edited last on &nbsp;<%= @project.updated_at.to_formatted_s(:long) %></i></label><br>
+         <% end %>
+         <% if @project.dateedited != nil %>
+         <label class="control-label" for="inputSmall"><i>edited last on &nbsp;<%= @project.dateedited.to_formatted_s(:long) %></i></label><br>
+         <% end %>
+         <% if @project.dateapproved != nil %>
          <label class="control-label green" for="inputSmall">approved on &nbsp;<%= @project.dateapproved.to_formatted_s(:long) %></label>&nbsp;
-         
+         <% end %>
      <p>
      </p>
  </div>   
@@ -70,7 +79,7 @@
 <p>
 <strong>Visible to: &nbsp;</strong>
   <% if @project.visiblepenn %>
-  <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>Penn</button> 
+  <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>P</button> 
   <% end %>
   <% if @project.visiblemhealth %>  
   <button type="button" class="btn btn-fab btn-fab-mini" style='font-size:20px'>mH</button> 

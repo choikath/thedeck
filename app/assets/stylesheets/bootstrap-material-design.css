@@ -83,7 +83,7 @@ a:focus {
 a .material-icons,
 a:hover .material-icons,
 a:focus .material-icons {
-  vertical-align: middle;
+  /*vertical-align: middle;*/
 }
 .form-horizontal .radio,
 .form-horizontal .checkbox,

@@ -2,7 +2,9 @@
 
 <%= render 'form' %>
 
-
+    <% @project.update_attributes(new: false) %>
+    <% @project.update_attributes(dateedited: DateTime.current().in_time_zone('Eastern Time (US & Canada)') ) %>
+    
     <a href="<%= project_path %>" class="btn btn-raised">See project details &nbsp;<i class="material-icons md-18">fingerprint</i></a>
       &nbsp;&nbsp; 
     <a href="<%= projects_path %>" class="btn btn-raised"><i class="material-icons md-18">home</i></a>

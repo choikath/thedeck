@@ -38,27 +38,27 @@
 <% currentUser = 1 %> <!-- 1 = admin, 2 = mhealth, 3 = Bill for demo -->
 
 <% if currentUser == 2 %>
-    <% allvisibleprojects = @projects.where(visiblemhealth: true).order(:score) %>
+    <% allvisibleprojects = @projects.where(visiblemhealth: true).order(score: :desc) %>
     <p>Hello mhealth!</p>
 <% elsif currentUser == 3 %>
-    <% allvisibleprojects = @projects.where(visibleBill: true).order(:score) %>
+    <% allvisibleprojects = @projects.where(visibleBill: true).order(score: :desc) %>
     <p>Hello Bill!</p>
 <% else %>
-     <% allvisibleprojects = @projects.order(:score) %>
+     <% allvisibleprojects = @projects.order(score: :desc) %>
 <% end %>
 
 
 <div class="row">
-    <a href="#" class="btn btn-raised btn-info">Reviewed!</a>
+    <a href="" class="btn btn-raised btn-info">Reviewed!</a>
   
   </div>
 
 <div class="row">
-  
+
 <% allvisibleprojects.each do |project|%>
 <% if project.exists %>
-<div class="col-sm-6">
- <div class="well infobox">
+ <div class="col-sm-6"> 
+ <div class="well infobox" onclick="document.location='/projects/<%= project.id %>'">
     
      <% if project.oldscore < project.score %>
         <button type="button" class="btn btn-fab btn-fab-mini"><%= project.score %></button>
@@ -79,27 +79,28 @@
      </p>
      
      
-         
+    <!-- only most advanced time stamp should show -->     
      <% if project.new %>
          <label class="control-label" for="inputSmall"><%= project.created_at.to_formatted_s(:long) %></label>
-         
      <% elsif project.approved %>
          <label class="control-label green" for="inputSmall"><i><%= project.dateapproved.to_formatted_s(:long) %> &nbsp; (approved)</i></label>
-     <% else %>
-         <label class="control-label" for="inputSmall"><i><%= project.updated_at.to_formatted_s(:long) %> &nbsp; (edited)</i></label>
-         <label class="control-label" for="inputSmall"><% project.dateunderreview.to_formatted_s(:long)  %> &nbsp; (under review)</label>    
+     <% elsif project.datereviewed != nil %>
          <label class="control-label" for="inputSmall"><% project.datereviewed.to_formatted_s(:long)  %> &nbsp; (reviewed)</label>    
+     <% elsif project.dateunderreview != nil %>      
+         <label class="control-label" for="inputSmall"><% project.dateunderreview.to_formatted_s(:long)  %> &nbsp; (under review)</label>    
+     <% else %> <!-- if project.dateedited != nil %> -->
+         <label class="control-label" for="inputSmall"><i><%= project.dateedited.to_formatted_s(:long) %> &nbsp; (edited)</i></label>
      <% end %>
      <p>
      </p>
  </div>
- </div>
+
  <% else %>
  <% end %> <!-- closes if exists statement -->
- 
+ </div>
  <% end %> <!-- closes projects loop -->    
       
-</div>
+</div> 
      
     </body>
     

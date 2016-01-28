@@ -18,10 +18,10 @@
     
      
   <p>
+  <!-- delete status management here -->
+   <label class="control-label red">Keep entry? &nbsp;</label>
+    <%= f.check_box :exists %><br>
 
-  <label class="control-label red">New entry? &nbsp;</label>
-    <%= f.check_box :new %>
-  <br>  
 
   <label class="control-label">New &nbsp;&nbsp; / &nbsp;&nbsp; Old score </label><br>
   <button type="button" class="btn btn-fab btn-fab-mini" style="font-size:22px"><%= f.text_field :score %></button>
