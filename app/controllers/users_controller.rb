@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @projects = Project.all.select {|e| e.user_ids.include? @user.id}
+    # if we used mongo in the future, could make a direct query
   end
 
   # GET /users/new

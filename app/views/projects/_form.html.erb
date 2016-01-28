@@ -49,9 +49,11 @@
       <%= f.check_box :ondeck %>
 
   <br><br>
+  <% if false %>
   <label class="control-label">Send to:&nbsp;</label>
   <%= f.select(:sendto, [['Select One',0],['Brian',1], ['Damien',2], ['Bill',3], ['Neha',4], ['Subha',5], ['Roy',6]]) %>
-  
+	  <% end %>
+
     
     
     
@@ -64,11 +66,16 @@
     <br>
 
     <label class="control-label">Visible to:</label>
-    <br><label class="control-label">Brian:</label>&nbsp;
+    <br>
+	<!-- <label class="control-label">Brian:</label>&nbsp;
     <%= f.check_box :visibleBrian %>
-    &nbsp;&nbsp;<label class="control-label">Damien:</label>&nbsp;
-    <%= f.check_box :visibleDamien %>
-    <br><label class="control-label">Bill:</label>&nbsp;
+    &nbsp;&nbsp; -->
+		<% User.all.each do |user| %>
+	<label class="control-label"><%= user.name %></label>&nbsp;
+  	
+    <%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id) || @project.user_ids.include?("#{user.id}") %>
+    
+	<!-- <br><label class="control-label">Bill:</label>&nbsp;
     <%= f.check_box :visibleBill %>
     &nbsp;&nbsp;<label class="control-label">Neha:</label>&nbsp;
     <%= f.check_box :visibleNeha %>
@@ -76,13 +83,14 @@
     <%= f.check_box :visibleSubha %>
     &nbsp;&nbsp;<label class="control-label">Roy:</label>&nbsp;
     <%= f.check_box :visibleRoy %>
-    </p>
+    
     
     <label class="control-label">Penn:</label>&nbsp;
     <%= f.check_box :visiblepenn %>
     
     <label class="control-label">Visible to mhealth: &nbsp;</label>
-    <%= f.check_box :visiblemhealth %>
+    <%= f.check_box :visiblemhealth %> -->
+		<%end%>
   
   
   

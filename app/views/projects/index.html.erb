@@ -58,46 +58,11 @@
 <% allvisibleprojects.each do |project|%>
 <% if project.exists %>
  <div class="col-sm-6"> 
- <div class="well infobox" onclick="document.location='/projects/<%= project.id %>'">
-    
-     <% if project.oldscore < project.score %>
-        <button type="button" class="btn btn-fab btn-fab-mini"><%= project.score %></button>
-     <% else %>
-         <button type="button" class="btn btn-fab btn-fab-mini"><%= project.score %></button>
-     <% end %>
+ <%= render "project", project: project %>
 
-     <% if project.approved %>
-          <label class="control-label green" for="inputSmall"> &nbsp; approved <i class="material-icons green md-18">done</i></label>
-     <% else %>
-     <% end %>
-     
-     
-     <h2><%= project.name %></h2>
-     <h3><%= project.subtitle %></h3>
-     <p>
-     <%= project.description %> 
-     </p>
-     
-     
-    <!-- only most advanced time stamp should show -->     
-     <% if project.new %>
-         <label class="control-label" for="inputSmall"><%= project.created_at.to_formatted_s(:long) %></label>
-     <% elsif project.approved %>
-         <label class="control-label green" for="inputSmall"><i><%= project.dateapproved.to_formatted_s(:long) %> &nbsp; (approved)</i></label>
-     <% elsif project.datereviewed != nil %>
-         <label class="control-label" for="inputSmall"><% project.datereviewed.to_formatted_s(:long)  %> &nbsp; (reviewed)</label>    
-     <% elsif project.dateunderreview != nil %>      
-         <label class="control-label" for="inputSmall"><% project.dateunderreview.to_formatted_s(:long)  %> &nbsp; (under review)</label>    
-     <% else %> <!-- if project.dateedited != nil %> -->
-         <label class="control-label" for="inputSmall"><i><%= project.dateedited.to_formatted_s(:long) %> &nbsp; (edited)</i></label>
-     <% end %>
-     <p>
-     </p>
  </div>
-
  <% else %>
  <% end %> <!-- closes if exists statement -->
- </div>
  <% end %> <!-- closes projects loop -->    
       
 </div> 
