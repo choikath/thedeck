@@ -6,20 +6,19 @@
 <div class="page-header" align="center" id="banner">
 <div class="row">
 <div class="col-sm-6">
-<h1>mHealth Project Deck</h1>
-<p class="lead">The current projects under consideration for review by the mHealth executive committee, updated in real-time</p>
+<h1>mHealth Labs Project Deck</h1>
+<p class="lead">The current projects underway, approved by the mHealth executive committee, updated in real-time</p>
 </div>
 
 <div class="col-sm-6">
-<p><button type="button" class="btn btn-fab btn-fab-mini">#</button>
-<small>&nbsp;= Quality Score (out of 100); </small>
+<p>
 
-<small style="color:#FFAB12">&nbsp; under review</small>
-<small style="color:#03a9f4">&nbsp; reviewed</small>
-<small style="color:#4caf50">&nbsp; approved</small>
+<small style="color:#4caf50">&nbsp; completed</small>
+<small style="color:#03a9f4">&nbsp; active</small>
 
 </p></div>
 </div></div>
+
 
 <div class="row"><p><br></p></div>
 
@@ -34,28 +33,19 @@
 
 
   
-    <!-- replace with accounts current user -->
-<% currentUser = 1 %> <!-- 1 = admin, 2 = mhealth, 3 = Bill for demo -->
+ 
+<% allcompletedprojects = @projects.where(completed: true).order(datecreated: :desc) %>
+<% allactiveprojects = @projects.where(active: true).order(datecreated: :desc) %>
 
-<% if currentUser == 2 %>
-    <% allvisibleprojects = @projects.where(visiblemhealth: true).order(score: :desc) %>
-    <p>Hello mhealth!</p>
-<% elsif currentUser == 3 %>
-    <% allvisibleprojects = @projects.where(visibleBill: true).order(score: :desc) %>
-    <p>Hello Bill!</p>
-<% else %>
-     <% allvisibleprojects = @projects.order(score: :desc) %>
-<% end %>
-<!-- hey -->
 
 <div class="row">
-    <a href="" class="btn btn-raised btn-info">Reviewed!</a>
+    <a href="" class="btn btn-raised btn-success">Completed</a>
   
   </div>
 
 <div class="row">
 
-<% allvisibleprojects.each do |project|%>
+<% allcompletedprojects.each do |project|%>
 <% if project.exists %>
  <div class="col-sm-6"> 
  <%= render "project", project: project %>
@@ -67,6 +57,25 @@
       
 </div> 
      
+ <div class="row">
+     <a href="" class="btn btn-raised btn-info">Active</a>
+
+   </div>
+
+ <div class="row">
+
+ <% allactiveprojects.each do |project|%>
+ <% if project.exists %>
+  <div class="col-sm-6"> 
+  <%= render "project", project: project %>
+
+  </div>
+  <% else %>
+  <% end %> <!-- closes if exists statement -->
+  <% end %> <!-- closes projects loop -->    
+  
+ </div> 
+ 
     </body>
     
     

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128225422) do
+ActiveRecord::Schema.define(version: 20160210194528) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -19,16 +19,16 @@ ActiveRecord::Schema.define(version: 20160128225422) do
     t.string   "score"
     t.string   "oldscore"
     t.text     "description"
-    t.boolean  "metricLOS"
-    t.boolean  "new"
+    t.boolean  "complete"
+    t.boolean  "backlog"
     t.datetime "datecreated"
-    t.datetime "dateunderreview"
+    t.datetime "datecompleted"
     t.datetime "datereviewed"
     t.boolean  "approved"
     t.datetime "dateapproved"
     t.datetime "dateedited"
     t.string   "sendto"
-    t.boolean  "ondeck"
+    t.boolean  "active"
     t.boolean  "exists"
     t.boolean  "visiblepenn"
     t.boolean  "visibleRoy"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20160128225422) do
     t.boolean  "visibleNeha"
     t.boolean  "visibleSubha"
     t.boolean  "visiblemhealth"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "user_ids",        default: "[]"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "user_ids",       default: "[]"
   end
 
   create_table "users", force: :cascade do |t|

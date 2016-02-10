@@ -1,0 +1,74 @@
+
+
+<p id="notice"><%= notice %></p>
+ 
+ 
+<div class="page-header" align="center" id="banner">
+<div class="row">
+<div class="col-sm-6">
+<h1>mHealth Project Deck</h1>
+<p class="lead">The current projects under consideration for review by the mHealth executive committee, updated in real-time</p>
+</div>
+
+<div class="col-sm-6">
+<p><button type="button" class="btn btn-fab btn-fab-mini">#</button>
+<small>&nbsp;= Quality Score (out of 100); </small>
+
+<small style="color:#FFAB12">&nbsp; under review</small>
+<small style="color:#03a9f4">&nbsp; reviewed</small>
+<small style="color:#4caf50">&nbsp; approved</small>
+
+</p></div>
+</div></div>
+
+<div class="row"><p><br></p></div>
+
+<!--<div class="row">-->
+<!--    <ul class="nav nav-pills">-->
+<!--        <li class="active"><a href="#">Approved<span class="badge">42</span></a></li>-->
+<!--    </ul>-->
+<!--    <div id="source-button" class="btn btn-primary btn-xs" style="display:none;">< ></div>-->
+<!--</div>-->
+
+
+
+
+  
+    <!-- replace with accounts current user -->
+<% currentUser = 1 %> <!-- 1 = admin, 2 = mhealth, 3 = Bill for demo -->
+
+<% if currentUser == 2 %>
+    <% allvisibleprojects = @projects.where(visiblemhealth: true).order(score: :desc) %>
+    <p>Hello mhealth!</p>
+<% elsif currentUser == 3 %>
+    <% allvisibleprojects = @projects.where(visibleBill: true).order(score: :desc) %>
+    <p>Hello Bill!</p>
+<% else %>
+     <% allvisibleprojects = @projects.order(score: :desc) %>
+<% end %>
+<!-- hey -->
+
+<div class="row">
+    <a href="" class="btn btn-raised btn-info">Reviewed!</a>
+  
+  </div>
+
+<div class="row">
+
+<% allvisibleprojects.each do |project|%>
+<% if project.exists %>
+ <div class="col-sm-6"> 
+ <%= render "project", project: project %>
+
+ </div>
+ <% else %>
+ <% end %> <!-- closes if exists statement -->
+ <% end %> <!-- closes projects loop -->    
+      
+</div> 
+     
+    </body>
+    
+    
+  
+ <!--<%= link_to 'New Project', new_project_path %>-->
