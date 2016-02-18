@@ -11,23 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin %>
-  </div>
-  <div class="field">
-    <%= f.label :session_key %><br>
-    <%= f.text_field :session_key %>
-  </div>
+
+<div class="">
+<form class="form-horizontal">
+
+  <div class="container">
+	<table class="table table-hover" class="table table-condensed">
+	  <thead>
+	    <tr>
+	      <th>Team Member Name</th>
+		  <th>Affiliation</th>
+		  <th>Title or School</th>
+	      <th>Hipaa</th>
+	      <th>CSA</th>
+	      <th>IPA</th>
+		  <th colspan="1"></th>
+	</tr>
+	<tr>
+    <td><h4><%= f.text_field :name, cols: 10 %></h4> </td>
+    <td>
+	   <%= f.select(:usertype, [["Select One",0],["Student",1],["UPHS",2], ["Other",3]]) %>
+	</td>
+ 	<td><label class="control-label">Title:</label>
+ 	   <%= f.select(:title, [["Select Title",0], ["MD",1], ["NP",2], ["RN",3]]) %><br>
+       <label class="control-label">School:</label>
+	   <%= f.select(:school, [["Select School",0], ["Engineering",1],["Med",2], ["Public Health",3]]) %>
+    </td>
+	<td>Needs?: <%= f.check_box :needs_hipaa %><br> Done?:<%= f.check_box :done_hipaa %></td>
+	<td>Needs?: <%= f.check_box :needs_csa %><br>Done?:<%= f.check_box :done_csa %></td>
+	<td>Needs?: <%= f.check_box :needs_ipa %><br>Done?:<%= f.check_box :done_ipa %></td>
+		
+		</tr>
+		
+		
+		
+     
+
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save", class:"btn btn-raised btn-success"%>
   </div>
 <% end %>

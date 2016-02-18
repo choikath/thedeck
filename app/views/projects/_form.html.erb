@@ -23,107 +23,53 @@
     <%= f.check_box :exists %><br>
 
 
-  <label class="control-label">New &nbsp;&nbsp; / &nbsp;&nbsp; Old score </label><br>
-  <button type="button" class="btn btn-fab btn-fab-mini" style="font-size:22px"><%= f.text_field :score %></button>
-  <button type="button" class="btn btn-fab btn-fab-mini" style="font-size:22px"><i><%= f.text_field :oldscore %></i></button>
-   
-    &nbsp;<label class="control-label green">approved?&nbsp;</label>
-  <%= f.check_box :approved %>
-  &nbsp;&nbsp;
+   <label class="control-label">IRB: Needed? &nbsp;</label>
+    <%= f.check_box :needs_irb %>&nbsp;&nbsp;&nbsp;&nbsp;
+
+   <label class="control-label">Done? &nbsp;</label>
+    <%= f.check_box :done_irb %><br>
   
+   
  
    <br>
    <br>
    <label class="control-label">Name</label>
        <h2><%= f.text_field :name, cols: 6 %></h2>
        
-        <label class="control-label">Subtitle</label>
-     <h3><%= f.text_area :subtitle, cols: 23 %></h3>
-      <label class="control-label">Description</label><br>
-     <%= f.text_area :description , cols: 40, rows: 10 %>
-
-  <br><br>  
-  <i class="material-icons blue md-14">vpn_key</i>&nbsp;<label class="control-label blue">LOS is a metric? &nbsp;</label>
-  <%= f.check_box :metricLOS %><br>
-        
-        <i class="material-icons md-14" style="color:#3F51B5">verified_user</i>&nbsp;<label class="control-label" style="color:#3F51B5">On Deck:&nbsp;</label>
-      <%= f.check_box :ondeck %>
-
-  <br><br>
-  <% if false %>
-  <label class="control-label">Send to:&nbsp;</label>
-  <%= f.select(:sendto, [['Select One',0],['Brian',1], ['Damien',2], ['Bill',3], ['Neha',4], ['Subha',5], ['Roy',6]]) %>
-	  <% end %>
-
-    
-    
-    
-
-
-
-    <!--  <label class="col-md-2 control-label">Exists:&nbsp;</label>-->
-    <!--<%= f.check_box :exists %>-->
-    <br>
-    <br>
-
-    <label class="control-label">Visible to:</label>
-    <br>
-	<!-- <label class="control-label">Brian:</label>&nbsp;
-    <%= f.check_box :visibleBrian %>
-    &nbsp;&nbsp; -->
+        <label class="control-label">Team Members</label><br>
 		<% User.all.each do |user| %>
-	<label class="control-label"><%= user.name %></label>&nbsp;
-  	
-    <%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id) || @project.user_ids.include?("#{user.id}") %>
-    
-	<!-- <br><label class="control-label">Bill:</label>&nbsp;
-    <%= f.check_box :visibleBill %>
-    &nbsp;&nbsp;<label class="control-label">Neha:</label>&nbsp;
-    <%= f.check_box :visibleNeha %>
-    <br><label class="control-label">Subha:</label>&nbsp;
-    <%= f.check_box :visibleSubha %>
-    &nbsp;&nbsp;<label class="control-label">Roy:</label>&nbsp;
-    <%= f.check_box :visibleRoy %>
-    
-    
-    <label class="control-label">Penn:</label>&nbsp;
-    <%= f.check_box :visiblepenn %>
-    
-    <label class="control-label">Visible to mhealth: &nbsp;</label>
-    <%= f.check_box :visiblemhealth %> -->
-		<%end%>
+		<label class="control-label"><%= user.name %></label>&nbsp;
+		<%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id) || @project.user_ids.include?("#{user.id}") %>		
+		<% end %>
+		
+		
+		<br><br><label class="control-label">Description</label><br>
+		<%= f.text_area :description , cols: 40, rows: 10 %>
+
+
+
+  <br><br>
+	<label class="control-label green">completed?&nbsp;</label>
+	 	<%= f.check_box :complete %>
+	  &nbsp;&nbsp;&nbsp;&nbsp;
+    <label class="control-label blue">approved?&nbsp;</label>
+		<%= f.check_box :approved %>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <label class="control-label yellow">in backlog?&nbsp;</label>
+    	<%= f.check_box :backlog %> 
+	
   
   
   
 
-  <br><br>
-  <!--<div class="field">-->
-  <!--  <%= f.label :datecreated %><br>-->
-  <!--  <%= f.datetime_select :datecreated %>-->
-  <!--</div>-->
-  <!--<div class="field">-->
-  <!--  <%= f.label :dateunderreview %><br>-->
-  <!--  <%= f.datetime_select :dateunderreview %>-->
-  <!--</div>-->
-  <!--<div class="field">-->
-  <!--  <%= f.label :datereviewed %><br>-->
-  <!--  <%= f.datetime_select :datereviewed %>-->
-  <!--</div>-->
-  <!--<div class="field">-->
-  <!--  <%= f.label :dateedited %><br>-->
-  <!--  <%= f.datetime_select :dateedited %>-->
-  <!--</div>-->
-  <!--<div class="field">-->
-  <!--  <%= f.label :dateapproved %><br>-->
-  <!--  <%= f.datetime_select :dateapproved %>-->
-  <!--</div>-->
+
 
   </div>  
   <div class="actions">
 
   </div>
-<%= f.submit %>
-    <!--<a href='<%= f.submit %>' class="btn btn-raised btn-primary"><i class="material-icons md-18">save</i></a>-->
+<%= f.submit "Save", class:"btn btn-raised btn-success" %>
+
 
 <% end %>
 

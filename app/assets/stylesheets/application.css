@@ -33,3 +33,7 @@
  .btn.btn-fab.purple { color: #ba68c8 ; }
  
  p, body {font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; }
+ 
+ a:hover {
+   background-color: #e5e5e5;
+}

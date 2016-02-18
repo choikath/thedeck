@@ -13,38 +13,35 @@
 <div class="col-sm-6">
 <p>
 
-<small style="color:#4caf50">&nbsp; completed</small>
-<small style="color:#03a9f4">&nbsp; active</small>
-
+<a href = "#completedbookm" style="color:#4caf50">completed</a>&nbsp;
+<a href = "#activebookm" style="color:#03a9f4">active</a>
+ &nbsp;//&nbsp; 
+<a href ="<%= users_path %>" style="color:#222222"> by team member</a>
 </p></div>
 </div></div>
 
 
 <div class="row"><p><br></p></div>
 
-<!--<div class="row">-->
-<!--    <ul class="nav nav-pills">-->
-<!--        <li class="active"><a href="#">Approved<span class="badge">42</span></a></li>-->
-<!--    </ul>-->
-<!--    <div id="source-button" class="btn btn-primary btn-xs" style="display:none;">< ></div>-->
-<!--</div>-->
 
 
 
 
   
- 
-<% allcompletedprojects = @projects.where(completed: true).order(datecreated: :desc) %>
-<% allactiveprojects = @projects.where(active: true).order(datecreated: :desc) %>
+<% allcompletedprojects = @projects.where(complete: true).order(datecreated: :desc) %>
 
 
-<div class="row">
+<% allactiveprojects = @projects.where(approved: true).order(datecreated: :desc)%>
+
+
+<div class="row" id="completedbookm">
     <a href="" class="btn btn-raised btn-success">Completed</a>
   
   </div>
 
 <div class="row">
 
+<% if allcompletedprojects.empty?() != true %>
 <% allcompletedprojects.each do |project|%>
 <% if project.exists %>
  <div class="col-sm-6"> 
@@ -54,16 +51,17 @@
  <% else %>
  <% end %> <!-- closes if exists statement -->
  <% end %> <!-- closes projects loop -->    
-      
+ <% end %>
 </div> 
      
- <div class="row">
+ <div class="row" id="activebookm">
      <a href="" class="btn btn-raised btn-info">Active</a>
 
    </div>
 
  <div class="row">
 
+<% if allactiveprojects.empty?() != true %>
  <% allactiveprojects.each do |project|%>
  <% if project.exists %>
   <div class="col-sm-6"> 
@@ -73,10 +71,10 @@
   <% else %>
   <% end %> <!-- closes if exists statement -->
   <% end %> <!-- closes projects loop -->    
-  
+  <% end %>
  </div> 
  
-    </body>
+ 
     
     
   

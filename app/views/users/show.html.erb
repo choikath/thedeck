@@ -1,23 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<%= link_to 'New User', new_user_path,  class:"btn btn-info" %>&nbsp;&nbsp;
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-
-<% @projects.each do |project| %>
-	<%= render project %>
-<% end %>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to '', edit_user_path(@user),  class:"fa fa-edit fa-2x"%> &nbsp;&nbsp;
+<%= link_to '', users_path, class:"fa fa-home fa-2x" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210194528) do
+ActiveRecord::Schema.define(version: 20160210214636) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -38,9 +38,11 @@ ActiveRecord::Schema.define(version: 20160210194528) do
     t.boolean  "visibleNeha"
     t.boolean  "visibleSubha"
     t.boolean  "visiblemhealth"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "user_ids",       default: "[]"
+    t.boolean  "needs_irb",      default: false
+    t.boolean  "done_irb",       default: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,8 +50,17 @@ ActiveRecord::Schema.define(version: 20160210194528) do
     t.string   "email"
     t.boolean  "admin",       default: false
     t.string   "session_key"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "needs_hipaa", default: true
+    t.boolean  "needs_csa",   default: true
+    t.boolean  "needs_ipa",   default: true
+    t.boolean  "done_hipaa",  default: false
+    t.boolean  "done_csa",    default: false
+    t.boolean  "done_ipa",    default: false
+    t.string   "usertype",    default: ""
+    t.string   "title",       default: ""
+    t.string   "school",      default: ""
   end
 
 end

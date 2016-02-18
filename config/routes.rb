@@ -8,9 +8,9 @@ Rails.application.routes.draw do
    root 'projects#index'
 
   # Example of regular route:
-     get 'projects/:id' => 'projects#show'
      
-     get 'projects/admin' => 'projects#admin'
+   #get 'projects/:id' => 'projects#show'
+     
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -20,11 +20,16 @@ Rails.application.routes.draw do
     
   #  get 'projects/new' => 'projects#new'
 
+  # resources :admin, :path => "/projects/admin"
 
+  get '/admin' => 'projects#admin'  
+  resources :admin, :only => [:index, :show]
+  
+  
   # Example resource route with options:
-     resources :products do
+     resources :projects do
   #     member do
-  #       get 'short'
+  # get :admin, on: :collection
   #       post 'toggle'
   #     end
   #

@@ -7,10 +7,16 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  # GET /projects/admin
+  # GET /projects/admin.json
+  def admin
+  end
+  
   # GET /projects/1
   # GET /projects/1.json
   def show
   end
+  
 
   # GET /projects/new
   def new
@@ -70,6 +76,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :subtitle, :score, :oldscore, :description, :metricLOS, :new, :datecreated, :dateunderreview, :datereviewed, :approved, :dateapproved, :dateedited, :sendto, :ondeck, :exists, :visiblepenn, :visibleRoy, :visibleBrian, :visibleDamien, :visibleBill, :visibleNeha, :visibleSubha, :visiblemhealth, :user_ids => [])
+      params.require(:project).permit(:name, :subtitle, :score, :oldscore, :description, :complete, :backlog, :datecreated, :datecompleted, :datereviewed, :approved, :dateapproved, :dateedited, :sendto, :active, :exists, :visiblepenn, :visibleRoy, :visibleBrian, :visibleDamien, :visibleBill, :visibleNeha, :visibleSubha, :visiblemhealth, :needs_irb, :done_irb, :user_ids => [])
     end
 end
