@@ -78,4 +78,6 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:name, :subtitle, :score, :oldscore, :description, :complete, :backlog, :datecreated, :datecompleted, :datereviewed, :approved, :dateapproved, :dateedited, :sendto, :active, :exists, :visiblepenn, :visibleRoy, :visibleBrian, :visibleDamien, :visibleBill, :visibleNeha, :visibleSubha, :visiblemhealth, :needs_irb, :done_irb, :user_ids => [])
     end
+    
+    
 end
