@@ -9,18 +9,33 @@
 	 	<% each_user = User.find(uid) %>
 		<% if each_user.usertype != "0" %>
 		<% if each_user.usertype == "1" %>
-
-		<%= each_user.name %> <font size="1px"><i><% if each_user.school != "0" %><%= each_user.school %><% end %></i></font>
+		<%= each_user.name %> <font size="1px"><i>
+			<% if each_user.school != "0" %>
+				<% if each_user.school == "1" %>Engineering
+				<% elsif each_user.school == "1" %>Med
+				<% elsif each_user.school == "1" %>Public
+				<% end %>
+			<% end %></i></font>
+		
+		
+		
 		<%elsif each_user.usertype == "2" %>
-			<%= each_user.name %>,&nbsp;<%= each_user.title %>
+			<%= each_user.name %>
+			<% if each_user.title != 0 %>
+				<% if each_user.title == "1" %>,&nbsp;MD 
+				<% elsif each_user.title == "2" %>,&nbsp;NP
+				<% elsif each_user.title == "3" %>,&nbsp;RN
+				<% else %>
+				<% end %>
+			<% end %>
 		<%end%> 
 		<%end%>
+     	;&nbsp;
+	 <% end %>
      </p>
      <p>
      <%= project.description %> 
      </p>
-     
-	 <% end %>
      
    
  </div>
