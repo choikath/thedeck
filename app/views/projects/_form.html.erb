@@ -38,8 +38,8 @@
        
         <label class="control-label">Team Members</label><br>
 		<% User.all.each do |user| %>
-		<label class="control-label"><%= user.name %></label>&nbsp;
-		<%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id) || @project.user_ids.include?("#{user.id}") %>		
+		<label class="control-label"><%= user.name %>:</label>&nbsp;
+		<%= check_box_tag "project[user_ids][]", user.id, @project.user_ids.include?(user.id) || @project.user_ids.include?("#{user.id}") %>	&nbsp;&nbsp;&nbsp;	
 		<% end %>
 		
 		
